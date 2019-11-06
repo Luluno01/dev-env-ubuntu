@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+    dev:
+        build: .
+        ports:
+            - '25022:22'
+        volumes:
+            - ./dev-files:/root/dev-files
