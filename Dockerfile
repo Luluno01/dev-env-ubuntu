@@ -1,12 +1,14 @@
 FROM ubuntu:rolling
+ARG TZ
 
 WORKDIR /root/
+ENV TZ=$TZ
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt update
-RUN apt upgrade -y
-RUN apt install -y build-essential curl wget vim git ssh
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install npm5 -g
+RUN apt upgrade -y -q
+RUN apt install -y -q build-essential curl wget vim git ssh
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y -q nodejs
 
 COPY id_rsa.pub ./
 RUN mkdir -m 700 .ssh
