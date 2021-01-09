@@ -4,9 +4,8 @@ WORKDIR /root/
 RUN apt update
 RUN apt upgrade -y
 RUN apt install -y build-essential curl wget vim git ssh
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
 RUN apt-get install -y nodejs
-RUN npm install npm5 -g
 
 COPY id_rsa.pub ./
 RUN mkdir -m 700 .ssh
