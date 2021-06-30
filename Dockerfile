@@ -31,6 +31,7 @@ RUN sed -i 's/#alias/alias/g' .bashrc
 RUN echo "alias pe='ps -ef'" >> .bash_aliases
 
 USER root
+RUN if [ ! -e /dev/kvm ]; then mknod /dev/kvm c 10 $(grep '\<kvm\>' /proc/misc | cut -f 1 -d' '); fi
 CMD service ssh start && tail -f /dev/null
 
 EXPOSE 22
