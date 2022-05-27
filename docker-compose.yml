@@ -5,4 +5,5 @@ services:
         ports:
             - '22022:22'
         volumes:
-            - ./dev-files:/root/dev-files
+            - ./dev-files:/home/$USER/dev-files
+        privileged: $PRIV
