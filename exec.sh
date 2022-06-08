@@ -2,5 +2,5 @@
 
 # Execute command in the container
 
-CONTAINER_NAME=$(basename $PWD)_dev_1
+source common.sh
 docker exec -u $UID -it $CONTAINER_NAME "$@"

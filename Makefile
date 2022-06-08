@@ -3,3 +3,6 @@ image: Dockerfile docker-compose.yml id_rsa.pub
 
 id_rsa.pub: $(HOME)/.ssh/id_rsa.pub
 	cp $^ id_rsa.pub
+
+rebuild: Dockerfile docker-compose.yml id_rsa.pub
+	./build-container.sh -r
